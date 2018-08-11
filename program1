@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace 快速排序
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] a = new int[5] { 1, 5, 7, 6, 3 };
+            Sort(a, 0, a.Length - 1);
+            for (int i = 0; i < a.Length; i++)
+            {
+                Console.WriteLine("{0}", a[i]);
+            }
+        }
+        static void Sort(int [] arr,int low,int high)
+        {
+            if (low > high) { return; }
+            int first = low;
+            int last = high;
+            int key = arr[first];
+            while (first < last)
+            {
+                //最后游标向前移动
+                while (first < last && arr[last] > key)
+                {
+                    --last;
+                }
+                arr[first] = arr[last];
+                //最前游标向后移动
+                while (first<last&&arr[first]<key)
+                {
+                    ++first;
+                }
+                arr[last] = arr[first];
+            }
+            //上面while退出：证明first 和last 重合
+            arr[first] = key;
+            //通过递归调用确定元素位置
+            Sort(arr, low, first - 1);
+            Sort(arr, first + 1, high);
+        }
+    }
+}
