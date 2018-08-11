@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+namespace 选择排序
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] arr = new int[5] { 9, 3, 6, 4, 7 };
+            //比较回合数:第几个回合代表和第几个元素位置互换
+            for (int i = 0; i < arr.Length; i++)
+            {
+                //默认设置每个回合开始时最大/最小元素位置
+                int index = i;
+                //从默认开始位置的下一个位置进行开始比较
+                for (int j = i; j < arr.Length; j++)
+                {
+                    if (arr[index]>arr[j])
+                    {
+                        index = j;
+                    }
+                }
+                if (index!=i)
+                {
+                    int temp = arr[i];
+                    arr[i] = arr[index];
+                    arr[index] = temp;
+                }
+            }
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.WriteLine("{0}", arr[i]);
+            }
+            Console.ReadKey();
+        }
+    }
+}
