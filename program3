@@ -1,0 +1,34 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace 插入排序
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] arr = new int[5] { 6, 5, 9, 3, 1 };
+            //插入排序是把无序的树一个一个插入到有序的数
+            //先默认把下标为0这个数已经有序
+            for (int i = 1; i < arr.Length; i++)
+            {
+                int val = arr[i];//这个是预备要插入的数
+                int index = i - 1;//找出他前一个下标
+                while (index>=0&&val<arr[index])
+                {
+                    arr[index + 1] = arr[index];
+                    index--;
+                }
+                arr[index + 1] = val;
+            }
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.WriteLine("{0}", arr[i]);
+            }
+            Console.ReadKey();
+        }
+    }
+}
